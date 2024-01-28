@@ -9,8 +9,34 @@ function Carburant({ id, name }) {
   const [controller] = useArgonController();
   const { darkMode } = controller;
 
-  const handleDelete = () => {
-    console.log(`Supprimer la Carburant avec l'id ${id}`);
+  const handleDelete = async () => {
+    try {
+      const token = sessionStorage.getItem('token');
+      console.log("Token récupéré :", token);
+  
+      // Nettoyez le token si nécessaire (retirez les guillemets)
+      const cleanedToken = token ? token.replace(/"/g, '') : '';
+      console.log("Token nettoyé :", cleanedToken);
+  
+      // Envoyer la requête DELETE au service web
+      const response = await fetch(`https://0801241705-production.up.railway.app/carburant/delete/${id}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${cleanedToken}`,
+        },
+      });
+  
+      // Vérifier si la suppression a réussi
+      if (response.ok) {
+        console.log(`Transmission avec l'id ${id} supprimée avec succès`);
+        // Ajoutez ici toute logique supplémentaire que vous souhaitez exécuter après la suppression
+      } else {
+        console.error(`Échec de la suppression de la Transmission avec l'id ${id}`);
+      }
+    } catch (error) {
+      console.error('Erreur lors de la suppression de la Transmission:', error);
+    }
   };
 
   const handleEdit = () => {

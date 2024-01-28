@@ -10,6 +10,7 @@ import ArgonTypography from "components/ArgonTypography";
 
 // Billing page components
 import Bill from "layouts/billing/components/Bill";
+import Etat from "../Bill/Etat";
 
 function ListeEtatInformation() {
   const [etats, setetats] = useState([]);
@@ -36,10 +37,11 @@ function ListeEtatInformation() {
         </ArgonTypography>
       </ArgonBox>
       <ArgonBox pt={1} pb={2} px={2}>
-        <ArgonBox component="ul" display="flex" flexDirection="column" p={0} m={0}>
-          {etats.map((etat) => (
-            <Bill key={etat.id} name={etat.nom} />
-          ))}
+      <ArgonBox component="ul" display="flex" flexDirection="column" p={0} m={0}>
+        {etats.map((etat) => (
+          <Etat key={etat.id} id={etat.id} name={etat.nom} />
+        ))}
+
         </ArgonBox>
       </ArgonBox>
     </Card>

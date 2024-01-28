@@ -9,7 +9,7 @@ import ArgonBox from "components/ArgonBox";
 import ArgonTypography from "components/ArgonTypography";
 
 // Billing page components
-import Bill from "layouts/billing/components/Bill";
+import Categorie from "../Bill/Categorie";
 
 function ListeCategorieInformation() {
   const [categories, setCategories] = useState([]);
@@ -36,10 +36,11 @@ function ListeCategorieInformation() {
         </ArgonTypography>
       </ArgonBox>
       <ArgonBox pt={1} pb={2} px={2}>
-        <ArgonBox component="ul" display="flex" flexDirection="column" p={0} m={0}>
-          {categories.map((categorie) => (
-            <Bill key={categorie.id} name={categorie.nom} />
-          ))}
+      <ArgonBox component="ul" display="flex" flexDirection="column" p={0} m={0}>
+        {categories.map((categorie) => (
+          <Categorie key={categorie.id} id={categorie.id} name={categorie.nom} />
+        ))}
+
         </ArgonBox>
       </ArgonBox>
     </Card>

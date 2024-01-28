@@ -10,6 +10,7 @@ import ArgonTypography from "components/ArgonTypography";
 
 // Billing page components
 import Bill from "layouts/billing/components/Bill";
+import Carburant from "../Bill/Carburant";
 
 function ListeCarburantInformation() {
   const [carburants, setcarburants] = useState([]);
@@ -36,10 +37,11 @@ function ListeCarburantInformation() {
         </ArgonTypography>
       </ArgonBox>
       <ArgonBox pt={1} pb={2} px={2}>
-        <ArgonBox component="ul" display="flex" flexDirection="column" p={0} m={0}>
-          {carburants.map((carburant) => (
-            <Bill key={carburant.id} name={carburant.nom} />
-          ))}
+      <ArgonBox component="ul" display="flex" flexDirection="column" p={0} m={0}>
+        {carburants.map((carburants) => (
+          <Carburant key={carburants.id} id={carburants.id} name={carburants.nom} />
+        ))}
+
         </ArgonBox>
       </ArgonBox>
     </Card>

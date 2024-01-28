@@ -4,13 +4,38 @@ import ArgonTypography from "components/ArgonTypography";
 import ArgonButton from "components/ArgonButton";
 import { useArgonController } from "context";
 
-function Bill({ name }) {
+function Bill({ id, name }) {
   const [controller] = useArgonController();
   const { darkMode } = controller;
 
-  const handleDelete = () => {
-    // Logique pour supprimer l'élément ici
-    console.log(`Supprimer ${name}`);
+  const handleDelete = async () => {
+    try {
+      const token = sessionStorage.getItem('token');
+      console.log("Token récupéré :", token);
+  
+      // Nettoyez le token si nécessaire (retirez les guillemets)
+      const cleanedToken = token ? token.replace(/"/g, '') : '';
+      console.log("Token nettoyé :", cleanedToken);
+  
+      // Envoyer la requête DELETE au service web
+      const response = await fetch(`https://0801241705-production.up.railway.app/marque/delete/${id}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${cleanedToken}`,
+        },
+      });
+  
+      // Vérifier si la suppression a réussi
+      if (response.ok) {
+        console.log(`Transmission avec l'id ${id} supprimée avec succès`);
+        // Ajoutez ici toute logique supplémentaire que vous souhaitez exécuter après la suppression
+      } else {
+        console.error(`Échec de la suppression de la Transmission avec l'id ${id}`);
+      }
+    } catch (error) {
+      console.error('Erreur lors de la suppression de la Transmission:', error);
+    }
   };
 
   const handleEdit = () => {
@@ -49,6 +74,7 @@ function Bill({ name }) {
 }
 
 Bill.propTypes = {
+  id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
 };
 

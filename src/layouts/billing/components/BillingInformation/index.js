@@ -36,10 +36,11 @@ function BillingInformation() {
         </ArgonTypography>
       </ArgonBox>
       <ArgonBox pt={1} pb={2} px={2}>
-        <ArgonBox component="ul" display="flex" flexDirection="column" p={0} m={0}>
-          {marques.map((marque) => (
-            <Bill key={marque.id} name={marque.nom} />
-          ))}
+      <ArgonBox component="ul" display="flex" flexDirection="column" p={0} m={0}>
+        {marques.map((marque) => (
+          <Bill key={marque.id} id={marque.id} name={marque.nom} />
+        ))}
+
         </ArgonBox>
       </ArgonBox>
     </Card>

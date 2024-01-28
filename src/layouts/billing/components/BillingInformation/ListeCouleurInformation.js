@@ -10,6 +10,7 @@ import ArgonTypography from "components/ArgonTypography";
 
 // Billing page components
 import Bill from "layouts/billing/components/Bill";
+import Couleur from "../Bill/Couleur";
 
 function ListeCouleurInformation() {
   const [couleurs, setcouleurs] = useState([]);
@@ -36,10 +37,11 @@ function ListeCouleurInformation() {
         </ArgonTypography>
       </ArgonBox>
       <ArgonBox pt={1} pb={2} px={2}>
-        <ArgonBox component="ul" display="flex" flexDirection="column" p={0} m={0}>
-          {couleurs.map((couleur) => (
-            <Bill key={couleur.id} name={couleur.nom} />
-          ))}
+      <ArgonBox component="ul" display="flex" flexDirection="column" p={0} m={0}>
+        {couleurs.map((couleur) => (
+          <Couleur key={couleur.id} id={couleur.id} name={couleur.nom} />
+        ))}
+
         </ArgonBox>
       </ArgonBox>
     </Card>
