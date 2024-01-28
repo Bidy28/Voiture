@@ -1,0 +1,34 @@
+/* AnnouncementsTable.css */
+
+.announcements-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .announcements-table th, .announcements-table td {
+    border: 1px solid #ddd; /* Couleur des bordures */
+    padding: 8px; /* Espacement du contenu à l'intérieur de chaque cellule */
+    text-align: left; /* Alignement du texte à gauche */
+  }
+  
+  .announcements-table th {
+    background-color: #f2f2f2; /* Couleur de fond pour les cellules d'en-tête */
+  }
+
+  .validation-button {
+    background-color: #4caf50; /* Couleur verte */
+    color: #fff; /* Couleur du texte */
+    border: none;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  
+  .validation-button:hover {
+    background-color: #45a049; /* Couleur verte légèrement plus foncée au survol */
+  }
+  
